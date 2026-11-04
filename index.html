@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Areeba Riaz | Data Analyst Portfolio</title>
+<meta name="description" content="Areeba Riaz - Data Analyst. Excel, Power BI, SQL and Python projects.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+:root{
+  --bg:#0b0c16; --panel:#0f101d; --card:#121424; --border:#1e2238;
+  --primary:#9d4edd; --grad:linear-gradient(135deg,#7b2cbf 0%,#c77dff 100%);
+  --text:#f8fafc; --muted:#94a3b8; --side:260px;
+}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Plus Jakarta Sans',sans-serif;scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);display:flex;min-height:100vh;overflow-x:hidden}
+a{text-decoration:none}
+.divider{height:1px;width:100%;background:linear-gradient(90deg,transparent,rgba(157,78,221,.4),transparent);margin:60px 0}
+.eyebrow{font-size:12px;color:#c77dff;font-weight:700;letter-spacing:1.5px;text-transform:uppercase}
+.sec-title{font-size:28px;margin:5px 0 25px}
+
+/* Sidebar */
+.sidebar{width:var(--side);background:var(--panel);border-right:1px solid var(--border);height:100vh;position:fixed;top:0;left:0;display:flex;flex-direction:column;justify-content:space-between;padding:25px 20px;z-index:100}
+.brand{display:flex;align-items:center;gap:12px;margin-bottom:25px;cursor:pointer}
+.brand img{width:44px;height:44px;border-radius:12px;object-fit:cover;border:2px solid #c77dff}
+.brand h3{font-size:16px;font-weight:700}
+.brand p{font-size:11px;color:var(--muted)}
+.menu{list-style:none;display:flex;flex-direction:column;gap:6px}
+.menu a{display:flex;align-items:center;gap:14px;padding:12px 16px;color:var(--muted);font-size:14px;font-weight:500;border-radius:8px;transition:.25s;cursor:pointer}
+.menu a:hover,.menu a.active{background:rgba(157,78,221,.15);color:#d8b4fe}
+.menu i{width:18px;text-align:center}
+.side-card{background:linear-gradient(180deg,rgba(123,44,191,.25),rgba(18,20,36,.7));border:1px solid rgba(157,78,221,.3);padding:18px 14px;border-radius:14px;text-align:center;margin-top:15px}
+.side-card h4{font-size:13px;margin-bottom:6px}
+.side-card p{font-size:11px;color:var(--muted);margin-bottom:12px}
+.side-social{display:flex;justify-content:center;gap:18px;font-size:18px}
+.side-social a{color:var(--muted);transition:.2s}
+.side-social a:hover{color:#d8b4fe}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:11px 22px;background:var(--grad);color:#fff;font-size:13px;font-weight:600;border-radius:10px;border:none;cursor:pointer;transition:transform .2s}
+.btn:hover{transform:translateY(-2px)}
+.btn.block{width:100%}
+.btn.ghost{background:transparent;border:1px solid rgba(157,78,221,.5);color:#d8b4fe}
+
+/* Main */
+main{margin-left:var(--side);width:calc(100% - var(--side));padding:30px 50px}
+.topnav{display:flex;justify-content:flex-end;align-items:center;gap:30px;margin-bottom:30px}
+.topnav ul{display:flex;gap:25px;list-style:none}
+.topnav a{color:var(--muted);font-size:14px;cursor:pointer;transition:color .2s}
+.topnav a:hover{color:#d8b4fe}
+
+/* Hero */
+.hero{display:grid;grid-template-columns:1.2fr .8fr;align-items:center;gap:40px;padding:20px 0}
+.hero .hello{font-size:12px;text-transform:uppercase;letter-spacing:2px;color:#c77dff;font-weight:700}
+.hero h1{font-size:50px;font-weight:800;line-height:1.1;margin:10px 0 14px}
+.hero h1 span{background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.hero h2{font-size:18px;font-weight:600;background:linear-gradient(90deg,#d8b4fe,#60a5fa);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:16px}
+.hero p{color:var(--muted);font-size:15px;line-height:1.7;margin-bottom:26px;max-width:540px}
+.hero-btns{display:flex;gap:12px;flex-wrap:wrap}
+.hero-visual{display:flex;justify-content:center}
+.avatar{width:320px;height:420px;border-radius:24px;border:2px solid rgba(199,125,255,.4);overflow:hidden;box-shadow:0 20px 40px rgba(0,0,0,.6),0 0 60px rgba(157,78,221,.25);background:#18152e}
+.avatar img{width:100%;height:100%;object-fit:cover;display:block}
+
+/* Stats */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);background:var(--grad);border-radius:16px;padding:22px 10px;margin-top:40px}
+.stat{text-align:center;border-right:1px solid rgba(255,255,255,.25);padding:0 10px}
+.stat:last-child{border-right:none}
+.stat b{display:block;font-size:26px;font-weight:800}
+.stat span{font-size:12px;opacity:.9}
+
+/* Tools */
+.grid-tools,.grid-services{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px}
+.tool,.service{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:24px;transition:.2s}
+.tool:hover,.service:hover{transform:translateY(-5px);border-color:var(--primary)}
+.tool-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
+.ticon{width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px}
+.level{font-size:11px;padding:4px 10px;border-radius:6px;font-weight:600}
+.tool h3,.service h3{font-size:18px;margin:6px 0 8px}
+.tool p,.service p{font-size:13px;color:var(--muted);line-height:1.6}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:15px}
+.tag{background:var(--bg);border:1px solid var(--border);padding:4px 10px;border-radius:6px;font-size:11px;color:#cbd5e1}
+.service i{font-size:28px}
+
+/* Projects */
+.grid-projects{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:25px}
+.project{background:var(--card);border:1px solid var(--border);border-radius:16px;overflow:hidden;display:flex;flex-direction:column;transition:.25s}
+.project:hover{transform:translateY(-6px);border-color:var(--primary)}
+.pbanner{height:200px;background:#18152e;position:relative;overflow:hidden;cursor:pointer}
+.pbanner img{width:100%;height:100%;object-fit:cover;object-position:top;display:block;transition:transform .3s}
+.project:hover .pbanner img{transform:scale(1.05)}
+.ptag{position:absolute;top:12px;left:12px;background:rgba(11,12,22,.85);border:1px solid var(--border);padding:4px 10px;border-radius:20px;font-size:11px;font-weight:600;color:#d8b4fe;z-index:2}
+.pbody{padding:22px;flex-grow:1;display:flex;flex-direction:column;justify-content:space-between}
+.pbody h4{font-size:17px;margin-bottom:8px}
+.pbody p{font-size:13px;color:var(--muted);line-height:1.6}
+.btn-view{background:rgba(157,78,221,.15);border:1px solid rgba(157,78,221,.4);color:#d8b4fe;padding:10px 16px;border-radius:8px;font-size:13px;font-weight:600;display:flex;align-items:center;justify-content:space-between;cursor:pointer;margin-top:16px;transition:.2s;width:100%}
+.btn-view:hover{background:var(--grad);color:#fff}
+
+/* Platforms */
+.platforms{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:15px;margin-bottom:40px}
+.platform{background:#15182a;border:1px solid var(--border);padding:18px;border-radius:12px;display:flex;align-items:center;gap:14px;transition:.2s}
+.platform:hover{transform:translateY(-4px);border-color:#c77dff;background:#1c2038}
+.platform i{font-size:22px}
+.platform span{font-size:14px;font-weight:600;color:#fff}
+
+/* Contact */
+.contact{display:grid;grid-template-columns:.9fr 1.1fr;background:var(--card);border:1px solid var(--border);border-radius:20px;overflow:hidden}
+.c-info{background:var(--grad);padding:35px;display:flex;flex-direction:column;justify-content:space-between}
+.c-info a{color:#fff}
+.c-form{padding:35px}
+.fg{margin-bottom:16px}
+.fg label{display:block;font-size:12px;color:var(--muted);margin-bottom:6px}
+.fc{width:100%;background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:12px 14px;color:#fff;font-size:13px;outline:none;font-family:inherit}
+.fc:focus{border-color:#c77dff}
+textarea.fc{resize:vertical}
+#formMsg{margin-top:14px;font-size:13px;padding:10px 12px;border-radius:8px;display:none;line-height:1.5}
+#formMsg.ok{display:block;background:rgba(16,185,129,.15);color:#34d399;border:1px solid rgba(16,185,129,.4)}
+#formMsg.err{display:block;background:rgba(239,68,68,.12);color:#fca5a5;border:1px solid rgba(239,68,68,.4)}
+
+/* Modal */
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,.88);backdrop-filter:blur(8px);z-index:9999;display:none;align-items:center;justify-content:center;padding:20px}
+.modal{background:#131526;border:1px solid rgba(199,125,255,.4);width:100%;max-width:850px;max-height:90vh;border-radius:18px;display:flex;flex-direction:column;overflow:hidden;box-shadow:0 25px 60px rgba(0,0,0,.9)}
+.m-head{padding:18px 24px;background:#181b30;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;gap:12px}
+.m-head h3{font-size:17px}
+.m-close{background:#232742;border:none;color:var(--muted);width:32px;height:32px;border-radius:50%;cursor:pointer;font-size:18px;flex-shrink:0;transition:.2s}
+.m-close:hover{background:var(--primary);color:#fff}
+.m-body{padding:24px;overflow-y:auto;display:flex;flex-direction:column;gap:20px}
+.m-body img.shot{width:100%;max-height:420px;object-fit:contain;background:#0b0c16;border-radius:10px;border:1px solid var(--border);display:block}
+.m-body h5{font-size:14px;color:#c77dff;margin-bottom:8px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{background:rgba(157,78,221,.2);border:1px solid rgba(199,125,255,.4);color:#e9d5ff;padding:5px 12px;border-radius:20px;font-size:12px;font-weight:600}
+.facts{background:var(--bg);padding:18px;border-radius:12px;border:1px solid var(--border);display:flex;flex-direction:column;gap:10px}
+.facts p{font-size:13px;line-height:1.6}
+.facts strong{color:#c77dff}
+.res-btn{display:inline-flex;align-items:center;gap:10px;background:#24292e;color:#fff;padding:10px 18px;border-radius:8px;font-size:13px;font-weight:600;border:1px solid rgba(255,255,255,.1);width:fit-content;transition:background .2s}
+.res-btn:hover{background:#333a42}
+
+@media(max-width:992px){
+  .sidebar{display:none}
+  main{margin-left:0;width:100%;padding:20px}
+  .topnav ul{display:none}
+  .hero,.contact{grid-template-columns:1fr}
+  .hero h1{font-size:38px}
+  .avatar{width:100%;max-width:320px}
+  .stats{grid-template-columns:repeat(2,1fr);row-gap:18px}
+  .stat:nth-child(2){border-right:none}
+}
+</style>
+</head>
+<body>
+
+<!-- SIDEBAR -->
+<aside class="sidebar">
+  <div>
+    <div class="brand" onclick="go('home')">
+      <img src="dp-6.png" alt="Areeba Riaz">
+      <div><h3>Areeba Riaz</h3><p>Data Analyst</p></div>
+    </div>
+    <ul class="menu" id="menu">
+      <li><a data-t="home" onclick="go('home')"><i class="fa-solid fa-house"></i> Home</a></li>
+      <li><a data-t="tools" onclick="go('tools')"><i class="fa-solid fa-screwdriver-wrench"></i> Tools &amp; Stack</a></li>
+      <li><a data-t="services" onclick="go('services')"><i class="fa-solid fa-briefcase"></i> Services</a></li>
+      <li><a data-t="portfolio" onclick="go('portfolio')"><i class="fa-solid fa-folder-open"></i> Portfolio</a></li>
+      <li><a data-t="contact" onclick="go('contact')"><i class="fa-solid fa-envelope"></i> Contact</a></li>
+    </ul>
+    <div class="side-card">
+      <h4>Available for Work</h4>
+      <p>Turning raw data into decision insights.</p>
+      <button class="btn block" onclick="go('contact')">Hire Me <i class="fa-solid fa-arrow-right"></i></button>
+    </div>
+  </div>
+  <div class="side-social">
+    <a href="https://github.com/areeba772" target="_blank" rel="noopener" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+    <a href="https://linkedin.com" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+    <a href="mailto:areeba.riaz@gmail.com" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+  </div>
+</aside>
+
+<main>
+  <header class="topnav">
+    <ul>
+      <li><a onclick="go('home')">Home</a></li>
+      <li><a onclick="go('tools')">Tools</a></li>
+      <li><a onclick="go('services')">Services</a></li>
+      <li><a onclick="go('portfolio')">Projects</a></li>
+      <li><a onclick="go('contact')">Contact</a></li>
+    </ul>
+    <button class="btn" onclick="go('contact')"><i class="fa-solid fa-paper-plane"></i> Let's Talk</button>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div>
+      <span class="hello">Hello, I'm</span>
+      <h1>Areeba <span>Riaz</span></h1>
+      <h2>Data Analyst | Excel Reporting | Power BI Dashboards | SQL Data Analysis</h2>
+      <p>I turn raw and messy data into clean, organized insights that support better business decisions. My focus is accurate analysis, organized reporting and clear communication.</p>
+      <div class="hero-btns">
+        <button class="btn" onclick="go('portfolio')">View Projects <i class="fa-solid fa-arrow-right"></i></button>
+        <button class="btn ghost" onclick="go('contact')">Contact Me</button>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="avatar"><img src="dp-6.png" alt="Areeba Riaz - Data Analyst"></div>
+    </div>
+  </section>
+
+  <div class="stats">
+    <div class="stat"><b>4</b><span>Case Studies</span></div>
+    <div class="stat"><b>4</b><span>Core Tools</span></div>
+    <div class="stat"><b>2</b><span>Power BI &amp; Excel Dashboards</span></div>
+    <div class="stat"><b>100%</b><span>Hands-on Projects</span></div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- TOOLS -->
+  <section id="tools">
+    <span class="eyebrow">Expertise</span>
+    <h2 class="sec-title">Tools &amp; Tech Stack</h2>
+    <div class="grid-tools">
+      <div class="tool">
+        <div class="tool-head"><div class="ticon" style="background:rgba(33,163,102,.15);color:#10b981"><i class="fa-solid fa-file-excel"></i></div><span class="level" style="background:#1b382b;color:#34d399">Advanced</span></div>
+        <h3>Microsoft Excel</h3>
+        <p>Data cleaning, PivotTables, formulas (XLOOKUP, INDEX/MATCH), KPI reports and interactive dashboards.</p>
+        <div class="tags"><span class="tag">PivotTables</span><span class="tag">KPI Cards</span><span class="tag">Slicers</span></div>
+      </div>
+      <div class="tool">
+        <div class="tool-head"><div class="ticon" style="background:rgba(242,200,17,.15);color:#facc15"><i class="fa-solid fa-chart-column"></i></div><span class="level" style="background:#3d3416;color:#facc15">Advanced</span></div>
+        <h3>Power BI</h3>
+        <p>Interactive dashboards, data modeling, Power Query transformations and DAX measures.</p>
+        <div class="tags"><span class="tag">DAX</span><span class="tag">Data Modeling</span><span class="tag">Power Query</span></div>
+      </div>
+      <div class="tool">
+        <div class="tool-head"><div class="ticon" style="background:rgba(0,117,143,.15);color:#38bdf8"><i class="fa-solid fa-database"></i></div><span class="level" style="background:#172e3d;color:#38bdf8">Advanced</span></div>
+        <h3>SQL &amp; MySQL</h3>
+        <p>Data extraction, multi-table joins, CTEs, subqueries and window functions.</p>
+        <div class="tags"><span class="tag">Joins</span><span class="tag">CTEs</span><span class="tag">Window Functions</span></div>
+      </div>
+      <div class="tool">
+        <div class="tool-head"><div class="ticon" style="background:rgba(55,118,171,.15);color:#60a5fa"><i class="fa-brands fa-python"></i></div><span class="level" style="background:#1e293b;color:#93c5fd">Proficient</span></div>
+        <h3>Python &amp; Jupyter</h3>
+        <p>Pandas and NumPy for exploratory data analysis, messy records and data manipulation.</p>
+        <div class="tags"><span class="tag">Pandas</span><span class="tag">NumPy</span><span class="tag">Jupyter</span></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <span class="eyebrow">What I do</span>
+    <h2 class="sec-title">My Services</h2>
+    <div class="grid-services">
+      <div class="service"><i class="fa-solid fa-table" style="color:#10b981"></i><h3>Excel Reporting</h3><p>Data cleaning, formatting, PivotTables, advanced formulas, KPI reports and interactive Excel dashboards.</p></div>
+      <div class="service"><i class="fa-solid fa-chart-pie" style="color:#facc15"></i><h3>Power BI Dashboards</h3><p>Interactive dashboards, data modeling, Power Query, DAX measures and business performance reporting.</p></div>
+      <div class="service"><i class="fa-solid fa-code" style="color:#38bdf8"></i><h3>SQL Data Analysis</h3><p>Data extraction, joins, CTEs, subqueries, window functions, aggregations and business insights.</p></div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- PORTFOLIO -->
+  <section id="portfolio">
+    <span class="eyebrow">Portfolio</span>
+    <h2 class="sec-title">Featured Case Studies</h2>
+    <div class="grid-projects" id="projectGrid"></div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <span class="eyebrow">Collaborate</span>
+    <h2 class="sec-title">Hire Me Across Platforms</h2>
+
+    <div class="platforms">
+      <a href="https://www.fiverr.com" target="_blank" rel="noopener" class="platform"><i class="fa-solid fa-circle-check" style="color:#1dbf73"></i><span>Fiverr</span></a>
+      <a href="https://contra.com" target="_blank" rel="noopener" class="platform"><i class="fa-solid fa-bolt" style="color:#ff5a5f"></i><span>Contra</span></a>
+      <a href="https://www.guru.com" target="_blank" rel="noopener" class="platform"><i class="fa-solid fa-briefcase" style="color:#4a90e2"></i><span>Guru</span></a>
+      <a href="https://www.peopleperhour.com" target="_blank" rel="noopener" class="platform"><i class="fa-solid fa-user-clock" style="color:#ff7f00"></i><span>PeoplePerHour</span></a>
+      <a href="https://www.workana.com" target="_blank" rel="noopener" class="platform"><i class="fa-solid fa-globe" style="color:#3b5998"></i><span>Workana</span></a>
+      <a href="https://linkedin.com" target="_blank" rel="noopener" class="platform"><i class="fa-brands fa-linkedin" style="color:#0a66c2"></i><span>LinkedIn</span></a>
+    </div>
+
+    <div class="contact">
+      <div class="c-info">
+        <div>
+          <h3 style="font-size:24px;margin-bottom:10px">Send a Direct Message</h3>
+          <p style="font-size:14px;opacity:.9">Your message is forwarded straight to my Gmail inbox.</p>
+          <div style="margin-top:30px;font-size:13px;line-height:2.1">
+            <div><i class="fa-solid fa-envelope"></i> <a href="mailto:areeba.riaz@gmail.com">areeba.riaz@gmail.com</a></div>
+            <div><i class="fa-brands fa-github"></i> <a href="https://github.com/areeba772" target="_blank" rel="noopener">github.com/areeba772</a></div>
+            <div><i class="fa-solid fa-location-dot"></i> Pakistan (Remote Worldwide)</div>
+          </div>
+        </div>
+        <div style="font-size:11px;opacity:.8;margin-top:20px">&copy; 2026 Areeba Riaz. All rights reserved.</div>
+      </div>
+
+      <div class="c-form">
+        <form id="contactForm">
+          <!-- honeypot (spam trap) -->
+          <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+          <div class="fg"><label for="name">Your Name</label><input id="name" type="text" name="name" class="fc" placeholder="Your name" required></div>
+          <div class="fg"><label for="email">Your Email</label><input id="email" type="email" name="email" class="fc" placeholder="you@company.com" required></div>
+          <div class="fg"><label for="message">Project Details / Requirement</label><textarea id="message" name="message" class="fc" rows="4" placeholder="Tell me what you need (Excel, Power BI, SQL)..." required></textarea></div>
+          <button type="submit" class="btn block" id="sendBtn">Send Message <i class="fa-solid fa-paper-plane"></i></button>
+          <div id="formMsg"></div>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- MODAL -->
+<div class="overlay" id="overlay">
+  <div class="modal">
+    <div class="m-head"><h3 id="mTitle"></h3><button class="m-close" onclick="closeProject()" aria-label="Close">&times;</button></div>
+    <div class="m-body" id="mBody"></div>
+  </div>
+</div>
+
+<script>
+/* ---------- Navigation ---------- */
+function go(id){
+  var el=document.getElementById(id);
+  if(el) el.scrollIntoView({behavior:'smooth'});
+}
+(function(){
+  var links=document.querySelectorAll('#menu a');
+  var ids=['home','tools','services','portfolio','contact'];
+  window.addEventListener('scroll',function(){
+    var cur='home';
+    ids.forEach(function(i){
+      var el=document.getElementById(i);
+      if(el && el.getBoundingClientRect().top<=160) cur=i;
+    });
+    links.forEach(function(a){a.classList.toggle('active',a.dataset.t===cur)});
+  });
+})();
+
+/* ---------- Projects (one image each) ---------- */
+var GH='https://github.com/areeba772';
+var projects=[
+  {
+    tag:'Excel Dashboard', title:'Customer Churn Analysis', img:'churn-dashboard.png',
+    short:'Analyzed 2,000 customers in Excel. Found a 33% churn rate, highest among Basic members and the 56+ age group.',
+    skills:['Microsoft Excel','PivotTables','Data Cleaning','KPI Cards','Slicers','Donut Charts','Retention Metrics'],
+    problem:'The business could not tell which membership tiers and age groups were leaving the service.',
+    dataset:'Subscription data of 2,000 customers (Active: 1,335, Churned: 665) with membership level, age group and purchase frequency.',
+    insights:'Overall churn rate is 33% and retention rate 67%. Churn was highest in Basic (586) and Silver (593) members, and the 56+ age group showed the most attrition.'
+  },
+  {
+    tag:'Power BI', title:'E-commerce Profit Decline Investigation', img:'profit-decline.png',
+    short:'Found profit leakage by city and category. Beauty and Home lines with negative margins were pulling profitability down.',
+    skills:['Power BI','DAX Measures','Power Query','Data Modeling','Margin Analysis','Root Cause Analysis'],
+    problem:'Net profit margin was dropping despite healthy sales, and loss-making areas were not clear.',
+    dataset:'E-commerce order data across city hubs (Lahore, Karachi, Quetta, Multan, Faisalabad, Peshawar), categories and discounts.',
+    insights:'Beauty and Home categories showed negative profit margins, and heavy discounts in regions like Quetta and Peshawar caused profit leakage.'
+  },
+  {
+    tag:'Excel Dashboard', title:'E-commerce Sales Analysis', img:'ecommerce-sales.png',
+    short:'Compared Corporate, Online and Retail channels, monthly order trends and regional distribution using PivotTables and Slicers.',
+    skills:['Microsoft Excel','PivotCharts','Slicers','AOV Calculation','Trend Analysis','Category Breakdown'],
+    problem:'There was no clear overview comparing sales channels or tracking order cancellations.',
+    dataset:'Sales records: 98 customers, Total Sales 10,811,800, Profit 2,533,302, AOV and monthly trends.',
+    insights:'Karachi generated the highest sales and the Online channel was the most profitable. Retail had more cancellations, pointing to a logistics improvement area.'
+  },
+  {
+    tag:'Excel Financial Reporting', title:'Bank Loan Analysis Dashboard', img:'bank-loan.png',
+    short:'Built a risk dashboard on 255.3K applications and $32.58M loan volume covering DTI ratio (50%) and default rate (11.61%).',
+    skills:['Microsoft Excel','Risk Analysis','Nested IF Logic','DTI Ratios','Financial Reporting','Executive Dashboard'],
+    problem:'The banking team found it hard to track bad loans and default risk across a large application volume.',
+    dataset:'Loan applications with DTI ratios, credit data, employment terms, loan purpose and loan status.',
+    insights:'Good loans were 88% and bad loans 12%. Average DTI was 50.0% and default rate 11.61%, which supports tighter credit rules on high-risk categories.'
+  }
+];
+
+var grid=document.getElementById('projectGrid');
+projects.forEach(function(p,i){
+  var d=document.createElement('div');
+  d.className='project';
+  d.innerHTML=
+    '<div class="pbanner" onclick="openProject('+i+')">'+
+      '<span class="ptag">'+p.tag+'</span>'+
+      '<img src="'+p.img+'" alt="'+p.title+'" loading="lazy">'+
+    '</div>'+
+    '<div class="pbody"><div><h4>'+p.title+'</h4><p>'+p.short+'</p></div>'+
+    '<button class="btn-view" onclick="openProject('+i+')"><span>View Whole Project</span> <i class="fa-solid fa-arrow-up-right-from-square"></i></button></div>';
+  grid.appendChild(d);
+});
+
+function openProject(i){
+  var p=projects[i];
+  document.getElementById('mTitle').textContent=p.title;
+  var chips=p.skills.map(function(s){return '<span class="chip">'+s+'</span>'}).join('');
+  document.getElementById('mBody').innerHTML=
+    '<div><h5><i class="fa-solid fa-chart-line"></i> Dashboard Screenshot</h5>'+
+      '<img class="shot" src="'+p.img+'" alt="'+p.title+' dashboard"></div>'+
+    '<div><h5><i class="fa-solid fa-wrench"></i> Skills &amp; Tools Used</h5><div class="chips">'+chips+'</div></div>'+
+    '<div class="facts">'+
+      '<p><strong><i class="fa-solid fa-circle-exclamation"></i> Problem:</strong> '+p.problem+'</p>'+
+      '<p><strong><i class="fa-solid fa-database"></i> Dataset:</strong> '+p.dataset+'</p>'+
+      '<p><strong><i class="fa-solid fa-lightbulb"></i> Insights:</strong> '+p.insights+'</p>'+
+    '</div>'+
+    '<a class="res-btn" href="'+GH+'" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> View Project Resources on GitHub</a>';
+  document.getElementById('overlay').style.display='flex';
+  document.body.style.overflow='hidden';
+}
+function closeProject(){
+  document.getElementById('overlay').style.display='none';
+  document.body.style.overflow='auto';
+}
+document.getElementById('overlay').addEventListener('click',function(e){if(e.target===this)closeProject()});
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closeProject()});
+
+/* ---------- Contact form (FormSubmit AJAX) ---------- */
+var form=document.getElementById('contactForm');
+var msg=document.getElementById('formMsg');
+var btn=document.getElementById('sendBtn');
+var TO='areeba.riaz@gmail.com';
+
+form.addEventListener('submit',function(e){
+  e.preventDefault();
+  msg.className=''; msg.style.display='none';
+
+  if(location.protocol==='file:'){
+    msg.className='err';
+    msg.textContent='Form file:// se kaam nahi karta. Site ko GitHub Pages / Netlify par host karke test karein.';
+    return;
+  }
+
+  btn.disabled=true;
+  btn.innerHTML='Sending... <i class="fa-solid fa-spinner fa-spin"></i>';
+
+  var data=new FormData(form);
+  data.append('_subject','New Portfolio Inquiry for Areeba Riaz');
+  data.append('_template','table');
+  data.append('_captcha','false');
+
+  fetch('https://formsubmit.co/ajax/'+TO,{
+    method:'POST',
+    headers:{'Accept':'application/json'},
+    body:data
+  })
+  .then(function(r){return r.json().catch(function(){return {}}).then(function(j){return {ok:r.ok,j:j}})})
+  .then(function(res){
+    if(res.ok && String(res.j.success)!=='false'){
+      msg.className='ok';
+      msg.textContent='Thank you! Your message has been sent. I will reply soon.';
+      form.reset();
+    }else{
+      throw new Error(res.j.message||'failed');
+    }
+  })
+  .catch(function(){
+    msg.className='err';
+    msg.innerHTML='Message send nahi hua. Please email directly: <a href="mailto:'+TO+'" style="color:#fca5a5;text-decoration:underline">'+TO+'</a>';
+  })
+  .finally(function(){
+    btn.disabled=false;
+    btn.innerHTML='Send Message <i class="fa-solid fa-paper-plane"></i>';
+  });
+});
+</script>
+</body>
+</html>
